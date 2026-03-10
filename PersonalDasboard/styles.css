@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: beige;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 20px auto;
+  width: 1300px;
+  height: 800px;
+  border: 5px solid black;
+  border-radius: 8px;
+  background-color: white;
+  position: relative;
+}
+
+.function-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#todo-el {
+  padding: 10px 30px 10px 30px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 20px;
+}
+
+#add-btn-el {
+  padding: 5px 20px 5px 20px;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+#add-btn-el:hover {
+  cursor: pointer;
+  background-color: green;
+  color: lightgreen;
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+}
+
+.task-txt {
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  background-color: lightgrey;
+  border: 1px solid black;
+  position: relative;
+}
+
+.delete-btn {
+  color: white;
+  padding: 5px;
+  background-color: lightcoral;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+  background-color: red;
+}
