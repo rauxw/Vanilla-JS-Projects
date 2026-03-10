@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Shoot Bunnies 🐰</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="playground" id="playground-el"></div>
+      <div class="score-board">
+        <div class="score" id="score-el">Score: 0</div>
+        <div class="score" id="high-score-el">High Score: 0</div>
+      </div>
+      <div class="function-btns">
+        <button class="game-btns" id="start-btn">Start</button>
+        <button class="game-btns" id="stop-btn">Stop</button>
+      </div>
+    </div>
+    <audio id="shoot-audio" src="effects/sound/gunshot.mp3"></audio>
+    <script src="script.js"></script>
+  </body>
+</html>
