@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Portfolio</title>
+  </head>
+  <body>
+    <nav class="nav-section">
+      <div class="nav-logo-section">
+        <img src="images/pfp.jpeg" alt="dark profile picture" />
+        <h1>Ras Al Gul</h1>
+      </div>
+      <div class="nav-infos">
+        <a href="#home">Home</a>
+        <a href="#project">Project</a>
+        <a href="#services">Services</a>
+        <a href="#resume">Resume</a>
+        <a href="#testimonal">Testimonial</a>
+        <a href="#about">About</a>
+        <a href="#article">Article</a>
+        <button>Contact</button>
+      </div>
+    </nav>
+    <div class="hero">
+      <h1>Hey, I'm Ras Contract Killer</h1>
+      <h3>Full Stack Killer based out of SF bay area</h3>
+      <button>Hire me</button>
+      <form
+        action=""
+        name="myForm"
+        onsubmit="return validateForm()"
+        method="post"
+      >
+        <div>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name-el"
+            placeholder="enter your name"
+          />
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email-el"
+            placeholder="enter your email"
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("images/background-image.jpg");
+  background-size: cover;
+  padding: 50px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.nav-logo-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-logo-section img {
+  width: 50px;
+  height: 50px;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+.nav-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-infos a {
+  text-decoration: none;
+  color: rgba(232, 227, 227, 0.278);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-infos a:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.nav-infos button {
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  background-color: rgba(128, 128, 128, 0.507);
+}
+
+.nav-infos button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.hero {
+  margin: 50px auto;
+  width: 1700px;
+  height: 700px;
+  background-color: rgba(255, 255, 255, 0.504);
+  border-radius: 8px;
+  border: 10px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  text-shadow: 1px 1px 1px white;
+}
+
+.hero h3 {
+  font-size: 30px;
+  text-shadow: 1px 1px 1px white;
+}
+
+.hero button {
+  font-size: 35px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(128, 128, 128, 0.507);
+}
+
+.hero button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.hero form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero label {
+  font-size: 30px;
+}
+
+.hero input {
+  font-size: 30px;
+  padding: 10px 20px 10px 20px;
+}
+
+.hero div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
