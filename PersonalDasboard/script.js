@@ -16,6 +16,11 @@ function createTodoElementDiv(todoText, index) {
   taskTextContainer.classList.add("task-txt");
   taskTextContainer.textContent = todoText;
 
+  taskTextContainer.addEventListener("click", function () {
+    taskTextContainer.classList.remove("task-text");
+    taskTextContainer.classList.add("task-complete");
+  });
+
   const taskDeleteBtn = document.createElement("button");
   taskDeleteBtn.classList.add("delete-btn");
   taskDeleteBtn.textContent = "Delete";
