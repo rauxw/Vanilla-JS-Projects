@@ -2,4 +2,4 @@
 
 ### Vanilla JavaScript Projects  
 
-Created by **Harik** with ❤️
+Created by **Hardik** with ❤️
