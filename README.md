@@ -1,1 +1,5 @@
-# Vanilla Javascript Projects
+---
+
+### Vanilla JavaScript Projects  
+
+Created by **Harik** with ❤️
