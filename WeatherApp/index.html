@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Weather Cast</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="city-input">
+        <input
+          type="text"
+          name="city"
+          id="city-input-el"
+          placeholder="Enter city name"
+        />
+      </div>
+
+      <div class="display-information">
+        <img
+          id="logo-el"
+          src="images/sunny-logo.png"
+          alt="weather icons shows condition of city"
+        />
+        <div class="info-div">
+          <div class="temperature-div">
+            <h1 id="temperature-el">15° C</h1>
+            <div id="sky-condition-el">Clear</div>
+          </div>
+          <div class="location-div">
+            <div id="city-name-el">London,</div>
+            <div id="country-name-el">UK</div>
+          </div>
+          <div class="weather-stats-div">
+            <div class="humidity-div">
+              <img
+                src="images/humidity-drop-logo.png"
+                alt="rain drop logo for humidity"
+              />
+              <div class="humidity-info-div">
+                <div id="humidity-el">68%</div>
+                <div id="humidity-text-el">Humidity</div>
+              </div>
+            </div>
+            <div class="wind-stats">
+              <img src="images/wind-logo.png" alt="wind blowing logo" />
+              <div class="wind-speed-stats">
+                <div id="wind-speed-el">2 Km/h</div>
+                <div id="wind-speed-text">Wind speed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
