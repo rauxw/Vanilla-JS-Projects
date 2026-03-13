@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Iosevka Charon", monospace;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin: 30px;
+}
+
+.side-bar-section {
+  width: 400px;
+  height: 900px;
+  box-shadow: 1px 1px 10px 1px #929497;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.profile-div {
+  margin: 20px auto;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-image: url("images/profile-background-default.jpg");
+  background-size: cover;
+}
+
+.profile-div img {
+  width: 150px;
+  height: 150px;
+}
+
+.side-bar-options-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+}
+
+.side-bar-option-style {
+  padding: 10px 20px 10px 20px;
+  width: 80%;
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 1px #929497;
+}
+
+.side-bar-option-style:hover {
+  background-color: #4361ee;
+  cursor: pointer;
+  color: white;
+}
+
+#content {
+  width: 1500px;
+  height: 900px;
+  box-shadow: 1px 1px 10px 1px #929497;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* this is dashboard-section */
+
+.display-variables-div {
+  width: 100%;
+  height: 200px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.display-graphics-div {
+  width: 100%;
+  height: 665px;
+}
+
+.display-variable-info {
+  box-shadow: 1px 1px 10px 1px #929497;
+  border-radius: 8px;
+  padding: 50px 80px 50px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.display-variable-info-text {
+  color: #6c777f;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.display-variable-data {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.display-graphics-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+.graphics-chart-circle-div {
+  width: 45%;
+  height: 95%;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px 1px #929497;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#circle-chart {
+  width: 520px !important;
+  height: 520px !important;
+  margin-left: 20px;
+}
+
+.graphics-chart-circle-div h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.graphics-chart-graph-div {
+  width: 45%;
+  height: 95%;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px 1px #929497;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+}
+
+.graphics-chart-graph-div h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+#bar-chart {
+  width: 90% !important;
+  height: 500px !important;
+}
+
+/* This is Transactions */
