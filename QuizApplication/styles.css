@@ -116,6 +116,20 @@ body {
 }
 
 .question-back-forth-section:hover {
+  cursor: pointer;
   background-color: #e9f3f0;
   color: #6e9f94;
+}
+
+#restart-btn {
+  padding: 15px 30px 15px 30px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2c8c72;
+  color: white;
+}
+
+#restart-btn:hover {
+  background-color: green;
+  cursor: pointer;
 }
