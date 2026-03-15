@@ -304,3 +304,46 @@ body {
   justify-content: space-between;
   gap: 50px;
 }
+
+/* Reports Section */
+
+.reports-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.reports-title {
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+#add-reports-btn {
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 8px;
+}
+
+#add-reports-btn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#reports-circle-chart {
+  width: 750px !important;
+  height: 750px !important;
+}

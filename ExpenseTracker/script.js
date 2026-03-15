@@ -136,8 +136,8 @@ function loadTransactions() {
             <td id="category-type-el">income</td>
             <td id="category-amount-el">+$12000</td>
             <td class="category-input-special">
-              <button id="edit-category-el">⌨️</button>
-              <button id="delete-category-el">🗑️</button>
+              <button id="edit-category-el">Edit</button>
+              <button id="delete-category-el">Delete</button>
             </td>
           </tr>
           <tr class="table-category">
@@ -147,8 +147,8 @@ function loadTransactions() {
             <td id="category-type-el">Expense</td>
             <td id="category-amount-el">-$100</td>
             <td class="category-input-special">
-              <button id="edit-category-el">⌨️</button>
-              <button id="delete-category-el">🗑️</button>
+              <button id="edit-category-el">Edit</button>
+              <button id="delete-category-el">Delete</button>
             </td>
           </tr>
         </table>
@@ -156,3 +156,132 @@ function loadTransactions() {
 }
 
 transactionEl.addEventListener("click", loadTransactions);
+
+// Budget Section
+
+// button switch
+const budgetsEl = document.getElementById("budgets-el");
+
+function loadBudgets() {
+  content.innerHTML = `
+       <div class="budget-header">
+          <div class="budget-title">Budget Categories</div>
+          <button id="add-budget-btn">+ Add Budget</button>
+        </div>
+        <div class="budget-cards-container">
+          <div class="budget-category-card">
+            <div class="budget-category-card-header">
+              <img class="budget-category-card-img" src="images/food-logo.png" alt="food logo "></img>
+              <div class="budget-category-info">
+              <div class="budget-category-title">Food</div>
+              <div class="budget-category-price">Budget: $200.00</div>
+            </div>
+          </div>
+          <div class="budget-card-sub-info-section">
+            <div class="budget-card-sub-info-text">Spend: $200.00 / Remaining: $100.00</div>
+            <div class="budget-card-sub-info-progress-bar"></div>
+            <div class="budget-card-sub-info-footer">
+              <div class="budget-card-sub-info-percent">67% of budget</div>
+              <div class="budget-card-sub-info-money-left">$100.00 left</div>
+            </div>
+          </div>
+        </div>
+         <div class="budget-category-card">
+          <div class="budget-category-card-header">
+            <img class="budget-category-card-img" src="images/food-logo.png" alt="food logo "></img>
+            <div class="budget-category-info">
+              <div class="budget-category-title">Food</div>
+              <div class="budget-category-price">Budget: $200.00</div>
+            </div>
+          </div>
+          <div class="budget-card-sub-info-section">
+            <div class="budget-card-sub-info-text">Spend: $200.00 / Remaining: $100.00</div>
+            <div class="budget-card-sub-info-progress-bar"></div>
+            <div class="budget-card-sub-info-footer">
+              <div class="budget-card-sub-info-percent">67% of budget</div>
+              <div class="budget-card-sub-info-money-left">$100.00 left</div>
+            </div>
+          </div>
+        </div>
+         <div class="budget-category-card">
+          <div class="budget-category-card-header">
+            <img class="budget-category-card-img" src="images/food-logo.png" alt="food logo "></img>
+            <div class="budget-category-info">
+              <div class="budget-category-title">Food</div>
+              <div class="budget-category-price">Budget: $200.00</div>
+            </div>
+          </div>
+          <div class="budget-card-sub-info-section">
+            <div class="budget-card-sub-info-text">Spend: $200.00 / Remaining: $100.00</div>
+            <div class="budget-card-sub-info-progress-bar"></div>
+            <div class="budget-card-sub-info-footer">
+              <div class="budget-card-sub-info-percent">67% of budget</div>
+              <div class="budget-card-sub-info-money-left">$100.00 left</div>
+            </div>
+          </div>
+        </div>
+         <div class="budget-category-card">
+          <div class="budget-category-card-header">
+            <img class="budget-category-card-img" src="images/food-logo.png" alt="food logo "></img>
+            <div class="budget-category-info">
+              <div class="budget-category-title">Food</div>
+              <div class="budget-category-price">Budget: $200.00</div>
+            </div>
+          </div>
+          <div class="budget-card-sub-info-section">
+            <div class="budget-card-sub-info-text">Spend: $200.00 / Remaining: $100.00</div>
+            <div class="budget-card-sub-info-progress-bar"></div>
+            <div class="budget-card-sub-info-footer">
+              <div class="budget-card-sub-info-percent">67% of budget</div>
+              <div class="budget-card-sub-info-money-left">$100.00 left</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  `;
+}
+
+budgetsEl.addEventListener("click", loadBudgets);
+
+//Reports Section
+
+//button switch
+const reportsEl = document.getElementById("reports-el");
+
+//reports-chart-circle
+
+function loadReports() {
+  content.innerHTML = `
+        <div class="budget-header">
+          <div class="budget-title">Reports</div>
+          <button id="add-budget-btn">June 2023</button>
+        </div>
+        <div class="chart-container">
+          <div class="chart-title">Income vs Expenses</div>
+          <canvas id="reports-circle-chart"></canvas>
+        </div>
+  `;
+  const reportChartCircleEl = document.getElementById("reports-circle-chart");
+  new Chart(reportChartCircleEl, {
+    type: "doughnut",
+    data: {
+      labels: ["Expenses", "Income"],
+      datasets: [
+        {
+          label: "Income vs Expenses",
+          data: [150, 12000],
+          backgroundColor: [
+            "#ff6384",
+            "#36a2eb",
+            "#ffcd56",
+            "#4bc0c0",
+            "#9966ff",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+  });
+}
+
+reportsEl.addEventListener("click", loadReports);
