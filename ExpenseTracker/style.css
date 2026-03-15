@@ -70,6 +70,8 @@ body {
   flex-direction: column;
   gap: 30px;
   padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* this is dashboard-section */
@@ -166,3 +168,139 @@ body {
 }
 
 /* This is Transactions */
+
+.transactions-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.transactions-title {
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+#add-transactions-btn {
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 8px;
+}
+
+#add-transactions-btn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.table-header {
+  background-color: pink;
+}
+
+.table-header th {
+  padding: 10px 20px 10px 20px;
+}
+
+.table-category {
+  text-align: center;
+}
+
+.category-input-special {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* Budget Section */
+
+.budget-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.budget-title {
+  font-size: 26px;
+  font-weight: bolder;
+}
+
+#add-budget-btn {
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 8px;
+}
+
+#add-budget-btn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.budget-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 30px;
+}
+
+.budget-category-card {
+  width: 350px;
+  height: 350px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px 1px #929497;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.budget-category-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.budget-category-card-img {
+  width: 120px;
+}
+
+.budget-category-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.budget-category-title {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.budget-card-sub-info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+}
+
+.budget-card-sub-info-text {
+  font-size: 16px;
+}
+
+.budget-card-sub-info-progress-bar {
+  width: 80px;
+  height: 10px;
+  background-color: grey;
+  border-radius: 8px;
+}
+
+.budget-card-sub-info-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+}

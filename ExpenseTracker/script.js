@@ -105,9 +105,54 @@ function loadDashboard() {
   });
 }
 
+// loadDashboard();
+
 dashBoardEl.addEventListener("click", loadDashboard);
 
 // Transaction Section
+
+// button switch
 const transactionEl = document.getElementById("transactions-el");
 
-// transactionEl.addEventListener("click", function () {});
+function loadTransactions() {
+  content.innerHTML = `
+       <div class="transactions-header">
+          <div class="transactions-title">Transactions</div>
+          <button id="add-transactions-btn">+ Add Transactions</button>
+        </div>
+        <table>
+          <tr class="table-header">
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Actions</th>
+          </tr>
+          <tr class="table-category">
+            <td id="category-date-el">Jun 12, 2025</td>
+            <td id="category-description-el">Salary</td>
+            <td id="category-el">Income</td>
+            <td id="category-type-el">income</td>
+            <td id="category-amount-el">+$12000</td>
+            <td class="category-input-special">
+              <button id="edit-category-el">⌨️</button>
+              <button id="delete-category-el">🗑️</button>
+            </td>
+          </tr>
+          <tr class="table-category">
+            <td id="category-date-el">Jun 12, 2025</td>
+            <td id="category-description-el">Lunch</td>
+            <td id="category-el">Food</td>
+            <td id="category-type-el">Expense</td>
+            <td id="category-amount-el">-$100</td>
+            <td class="category-input-special">
+              <button id="edit-category-el">⌨️</button>
+              <button id="delete-category-el">🗑️</button>
+            </td>
+          </tr>
+        </table>
+  `;
+}
+
+transactionEl.addEventListener("click", loadTransactions);
