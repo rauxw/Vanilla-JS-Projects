@@ -1,3 +1,5 @@
+// Common Variables
+
 // Main Common Elements
 const content = document.getElementById("content");
 
@@ -285,3 +287,39 @@ function loadReports() {
 }
 
 reportsEl.addEventListener("click", loadReports);
+
+// Savings section
+
+// button switch
+const savingsEl = document.getElementById("savings-el");
+
+function loadSavings() {
+  content.innerHTML = `
+    <div class="goal-header">
+          <div class="goal-title">Saving Goals</div>
+          <button id="add-goal-btn">+ Add Goals</button>
+        </div>
+        <div class="goals-container">
+          <div class="goal-card">
+            <div class="goal-card-header">
+              <div class="goal-card-header-left">
+                <div class="goal-card-header-left-title">New Car Savings</div>
+                <div class="goal-card-header-left-subtitle">
+                  Target:$120000.00
+                </div>
+              </div>
+              <div class="goal-card-header-right-text">289 days left</div>
+            </div>
+            <div class="goal-card-progress-bar"></div>
+            <div class="goal-card-footer">
+              <div class="goal-card-footer-left-text">
+                Saved: $1000.00(0.8%)
+              </div>
+              <div class="goal-card-footer-right-date">Mar 28, 2026</div>
+            </div>
+          </div>
+        </div>
+  `;
+}
+
+savingsEl.addEventListener("click", loadSavings);
