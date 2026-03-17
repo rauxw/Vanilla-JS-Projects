@@ -457,3 +457,22 @@ body {
   flex-direction: column;
   gap: 15px;
 }
+
+/* Budget */
+.budget-cards-btns-div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.budget-cards-btns-div button {
+  font-size: 16px;
+  padding: 9px 10px 9px 10px;
+  border-radius: 8px;
+}
+
+.budget-cards-btns-div button:hover {
+  cursor: pointer;
+  background-color: grey;
+  color: white;
+}

@@ -383,6 +383,95 @@ function getCategorySpend(category) {
 // button switch
 const budgetsEl = document.getElementById("budgets-el");
 
+function openBudgetModal() {
+  const modal = document.createElement("div");
+  modal.classList.add("modal-overlay");
+
+  modal.innerHTML = `
+    <div class="modal">
+      <h2>Add Budget</h2>
+      <label>Category</label>
+      <select id="budget-category">
+        <option value="Food">Food</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Housing">Housing</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Shopping">Shopping</option>
+      </select>
+      <label>Limit</label>
+      <input type="number" id="budget-limit" placeholder="Enter amount"/>
+      <button id="save-budget-btn">Save</button>
+      <button id="close-budget-btn">Cancel</button>
+    </div>
+  `;
+
+  document.body.append(modal);
+
+  modal.querySelector("#close-budget-btn").addEventListener("click", () => {
+    modal.remove();
+  });
+
+  modal.querySelector("#save-budget-btn").addEventListener("click", () => {
+    const category = document.getElementById("budget-category").value;
+    const limit = Number(document.getElementById("budget-limit").value);
+
+    if (!limit) {
+      return;
+    }
+
+    const exists = budgets.find(
+      (b) => b.category.toLowerCase() === category.toLowerCase()
+    );
+
+    if (exists) {
+      alert(`${category} Budget already exists`);
+      return;
+    }
+
+    budgets.push({ category, limit });
+    modal.remove();
+    loadBudgets();
+  });
+}
+
+function openEditBudgetModal(category) {
+  const budget = budgets.find(
+    (b) => b.category.toLowerCase() === category.toLowerCase()
+  );
+
+  const modal = document.createElement("div");
+  modal.classList.add("modal-overlay");
+
+  modal.innerHTML = `
+    <div class="modal">
+      <h2>Edit Budget</h2>
+
+      <label>Category</label>
+      <input type="text" value="${budget.category}" disabled />
+
+      <label>Limit</label>
+      <input type="number" id="edit-budget-limit" value="${budget.limit}"/>
+
+      <button id="update-budget-btn">Update</button>
+      <button id="close-budget-btn">Cancel</button>
+    </div>
+  `;
+
+  document.body.append(modal);
+
+  modal.querySelector("#close-budget-btn").addEventListener("click", () => {
+    modal.remove();
+  });
+
+  modal.querySelector("#update-budget-btn").addEventListener("click", () => {
+    const limit = Number(document.getElementById("edit-budget-limit").value);
+
+    budget.limit = limit;
+    modal.remove();
+    loadBudgets();
+  });
+}
+
 function loadBudgets() {
   content.innerHTML = `
        <div class="budget-header">
@@ -418,7 +507,7 @@ function loadBudgets() {
             <div style="
               width: ${percent}%;
               height: 100%;
-              background: ${percent > 100 ? "red" : "green"};
+              background: ${percent > 80 ? "orange" : "green"};
               border-radius:8px;
             "></div>
           </div>
@@ -429,9 +518,41 @@ function loadBudgets() {
             <div class="budget-card-sub-info-money-left">$${remaining} left</div>
           </div>
         </div>
+        <div class="budget-cards-btns-div">
+            <button class="edit-budget-btn" data-category="${
+              budget.category
+            }">Edit
+            </button>
+            <button class="delete-budget-btn" data-category="${
+              budget.category
+            }">Delete
+            </button>
+        </div>
     </div>
   `;
   });
+
+  document.querySelectorAll(".delete-budget-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const category = btn.dataset.category;
+
+      budgets = budgets.filter(
+        (b) => b.category.toLowerCase() !== category.toLowerCase()
+      );
+      loadBudgets();
+    });
+  });
+
+  document.querySelectorAll(".edit-budget-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const category = btn.dataset.category;
+      openEditBudgetModal(category);
+    });
+  });
+
+  document
+    .getElementById("add-budget-btn")
+    .addEventListener("click", openBudgetModal);
 }
 
 budgetsEl.addEventListener("click", loadBudgets);
@@ -501,6 +622,15 @@ function loadReports() {
 reportsEl.addEventListener("click", loadReports);
 
 // Savings section
+let goals = [
+  {
+    id: 1,
+    title: "New Car Savings",
+    target: 120000,
+    saved: 1000,
+    deadline: "2026-03-28",
+  },
+];
 
 // button switch
 const savingsEl = document.getElementById("savings-el");
@@ -511,27 +641,35 @@ function loadSavings() {
           <div class="goal-title">Saving Goals</div>
           <button id="add-goal-btn">+ Add Goals</button>
         </div>
-        <div class="goals-container">
-          <div class="goal-card">
+        <div class="goals-container" id="goals-container"></div>
+  `;
+
+  const goalsContainer = document.getElementById("goals-container");
+
+  goals.forEach((goal) => {
+    const percent = 0;
+
+    goalsContainer.innerHTML = `
+    <div class="goal-card">
             <div class="goal-card-header">
               <div class="goal-card-header-left">
-                <div class="goal-card-header-left-title">New Car Savings</div>
-                <div class="goal-card-header-left-subtitle">
-                  Target:$120000.00
-                </div>
+              <div class="goal-card-header-left-title">New Car Savings</div>
+              <div class="goal-card-header-left-subtitle">
+                Target:$120000.00
               </div>
-              <div class="goal-card-header-right-text">289 days left</div>
             </div>
-            <div class="goal-card-progress-bar"></div>
-            <div class="goal-card-footer">
-              <div class="goal-card-footer-left-text">
-                Saved: $1000.00(0.8%)
-              </div>
-              <div class="goal-card-footer-right-date">Mar 28, 2026</div>
-            </div>
-          </div>
+            <div class="goal-card-header-right-text">289 days left</div>
         </div>
-  `;
+          <div class="goal-card-progress-bar"></div>
+          <div class="goal-card-footer">
+            <div class="goal-card-footer-left-text">
+              Saved: $1000.00(0.8%)
+            </div>
+            <div class="goal-card-footer-right-date">Mar 28, 2026</div>
+          </div>
+    </div>
+    `;
+  });
 }
 
 savingsEl.addEventListener("click", loadSavings);
