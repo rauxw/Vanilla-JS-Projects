@@ -1,5 +1,5 @@
 // Data variables
-let transactions = [
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [
   {
     id: 1,
     date: "Jun 12, 2025",
@@ -49,6 +49,12 @@ let transactions = [
     amount: 150,
   },
 ];
+
+function saveData() {
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+  localStorage.setItem("budgets", JSON.stringify(budgets));
+  localStorage.setItem("goals", JSON.stringify(goals));
+}
 
 function calculateCategorySpending() {
   let food = 0;
@@ -100,9 +106,6 @@ function calculateTotalBalance() {
     savingsRate: income ? Math.round(((income - expense) / income) * 100) : 0,
   };
 }
-// Data formatted
-const dataCategory = calculateCategorySpending();
-const totalData = calculateTotalBalance();
 
 // Main Common Elements
 const content = document.getElementById("content");
@@ -113,6 +116,8 @@ const content = document.getElementById("content");
 const dashBoardEl = document.getElementById("dashboard-el");
 
 function loadDashboard() {
+  const dataCategory = calculateCategorySpending();
+  const totalData = calculateTotalBalance();
   content.innerHTML = `
       <div class="display-variables-div">
           <div class="display-variable-info">
@@ -280,6 +285,7 @@ function openModalTransaction(type = "add", data = {}) {
     };
 
     transactions.push(newTransaction);
+    saveData();
     renderTransactions();
     modal.remove();
   });
@@ -348,6 +354,7 @@ function loadTransactions() {
     if (e.target.classList.contains("delete-category-btn")) {
       const id = Number(e.target.dataset.id);
       transactions = transactions.filter((tx) => tx.id !== id);
+      saveData();
       renderTransactions();
     }
   });
@@ -429,6 +436,7 @@ function openBudgetModal() {
     }
 
     budgets.push({ category, limit });
+    saveData();
     modal.remove();
     loadBudgets();
   });
@@ -467,6 +475,7 @@ function openEditBudgetModal(category) {
     const limit = Number(document.getElementById("edit-budget-limit").value);
 
     budget.limit = limit;
+    saveData();
     modal.remove();
     loadBudgets();
   });
@@ -539,6 +548,7 @@ function loadBudgets() {
       budgets = budgets.filter(
         (b) => b.category.toLowerCase() !== category.toLowerCase()
       );
+      saveData();
       loadBudgets();
     });
   });
@@ -647,29 +657,157 @@ function loadSavings() {
   const goalsContainer = document.getElementById("goals-container");
 
   goals.forEach((goal) => {
-    const percent = 0;
-
-    goalsContainer.innerHTML = `
+    const percent = ((goal.saved / goal.target) * 100).toFixed(1);
+    const daysLeft = (
+      Math.ceil(new Date(goal.deadline) - new Date()) /
+      (1000 * 60 * 60 * 24)
+    ).toFixed(0);
+    goalsContainer.innerHTML += `
     <div class="goal-card">
             <div class="goal-card-header">
               <div class="goal-card-header-left">
-              <div class="goal-card-header-left-title">New Car Savings</div>
+              <div class="goal-card-header-left-title">${goal.title}</div>
               <div class="goal-card-header-left-subtitle">
-                Target:$120000.00
+                Target:$${goal.target}
               </div>
             </div>
-            <div class="goal-card-header-right-text">289 days left</div>
+            <div class="goal-card-header-right-text">${daysLeft} days left</div>
         </div>
-          <div class="goal-card-progress-bar"></div>
+          <div class="goal-card-progress-bar">
+            <div style="
+                width: ${percent}%;
+                height: 100%;
+                background: ${percent >= 100 ? "green" : "blue"};
+              ">
+            </div>
+          </div>
           <div class="goal-card-footer">
             <div class="goal-card-footer-left-text">
-              Saved: $1000.00(0.8%)
+              Saved: $${goal.saved} (${percent}%)
             </div>
-            <div class="goal-card-footer-right-date">Mar 28, 2026</div>
+            <div class="goal-card-footer-right-date">${new Date(
+              goal.deadline
+            ).toDateString()}
+            </div>
+          </div>
+          <div class="goal-card-btn-div">
+            <button class="add-saved-money-goal-btn" data-id="${
+              goal.id
+            }">+ Add</button>
+            <button class="delete-goal-btn" data-id="${
+              goal.id
+            }">- Delete</button>
           </div>
     </div>
     `;
   });
+
+  document
+    .getElementById("add-goal-btn")
+    .addEventListener("click", openAddSavingsModal);
+
+  document.querySelectorAll(".delete-goal-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.dataset.id);
+      goals = goals.filter((g) => g.id !== id);
+      saveData();
+      loadSavings();
+    });
+  });
+
+  document.querySelectorAll(".add-saved-money-goal-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.dataset.id);
+      openAddMoneyModal(id);
+    });
+  });
+}
+
+function openAddSavingsModal() {
+  const modal = document.createElement("div");
+  modal.classList.add("modal-overlay");
+
+  modal.innerHTML = `
+    <div class="modal">
+      <h2>Add Goal</h2>
+      <input type="text" id="goal-title" placeholder="Goal name"/>
+      <input type="number" id="goal-target" placeholder="Target name"/>
+      <input type="date" id="goal-deadline"/>
+      <button id="save-goal-btn-modal">Save</button>
+      <button id="close-goal-btn-modal">Cancel</button>
+    </div>
+  `;
+
+  document.body.append(modal);
+
+  modal.querySelector("#close-goal-btn-modal").addEventListener("click", () => {
+    modal.remove();
+  });
+
+  modal.querySelector("#save-goal-btn-modal").addEventListener("click", () => {
+    const goalTitle = document.getElementById("goal-title").value;
+    const goalNumber = Number(document.getElementById("goal-target").value);
+    const goalDate = document.getElementById("goal-deadline").value;
+
+    if (!goalTitle || !goalNumber || !goalDate) {
+      return;
+    }
+
+    goals.push({
+      id: Date.now(),
+      title: goalTitle,
+      target: goalNumber,
+      saved: 0,
+      deadline: goalDate,
+    });
+    saveData();
+    modal.remove();
+    loadSavings();
+  });
+}
+
+function openAddMoneyModal(id) {
+  const modal = document.createElement("div");
+  modal.classList.add("modal-overlay");
+
+  modal.innerHTML = `
+    <div class="modal">
+      <h2>Add Savings</h2>
+      <input type="number" id="add-amount-savings-btn" placeholder="Amount"/>
+      <button id="add-savings-money-btn">Add</button>
+      <button id="close-savings-money-btn">Cancel</button>
+    </div>
+  `;
+
+  document.body.append(modal);
+
+  modal
+    .querySelector("#close-savings-money-btn")
+    .addEventListener("click", () => {
+      modal.remove();
+    });
+
+  modal
+    .querySelector("#add-savings-money-btn")
+    .addEventListener("click", () => {
+      const addMoney = Number(
+        document.getElementById("add-amount-savings-btn").value
+      );
+      const goal = goals.find((g) => g.id === id);
+
+      transactions.push({
+        id: Date.now(),
+        date: new Date().toDateString(),
+        desc: `Savings: ${goal.title}`,
+        category: "Savings",
+        type: "expense",
+        amount: addMoney,
+      });
+      saveData();
+      goal.saved += addMoney;
+      modal.remove();
+      loadSavings();
+    });
 }
 
 savingsEl.addEventListener("click", loadSavings);

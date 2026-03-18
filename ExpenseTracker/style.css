@@ -391,7 +391,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  gap: 20px;
+  gap: 10px;
 }
 
 .goal-card-header {
@@ -475,4 +475,26 @@ body {
   cursor: pointer;
   background-color: grey;
   color: white;
+}
+
+.goal-card-btn-div {
+  margin: auto;
+}
+
+.add-saved-money-goal-btn {
+  padding: 5px 6px 5px 6px;
+  margin-bottom: 10px;
+}
+
+.delete-goal-btn {
+  padding: 5px 6px 5px 6px;
+  margin-bottom: 10px;
+}
+
+.add-saved-money-goal-btn:hover {
+  cursor: pointer;
+}
+
+.delete-goal-btn:hover {
+  cursor: pointer;
 }
