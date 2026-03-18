@@ -1,4 +1,4 @@
-let notes = [
+let notes = JSON.parse(localStorage.getItem("notes")) || [
   {
     id: 1,
     title: "Tech Stack",
@@ -64,6 +64,13 @@ let notes = [
   },
 ];
 
+function saveData() {
+  localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+// Main Element
+const container = document.querySelector(".container");
+
 // Add btn
 const addBtnEl = document.getElementById("create-note-btn-el");
 
@@ -112,6 +119,7 @@ function openAddModalNote() {
       content: content,
       date: formattedToday,
     });
+    saveData();
     loadNotesCards();
     modal.remove();
   });
@@ -119,9 +127,31 @@ function openAddModalNote() {
 
 addBtnEl.addEventListener("click", openAddModalNote);
 
+// Search btn
+const searchBtn = document.getElementById("search-btn-el");
+const searchInput = document.getElementById("search-input-el");
+
+function loadSearchedNote(value) {
+  if (!value) {
+    loadNotesCards();
+    return;
+  }
+  const filteredNotes = notes.filter(
+    (note) =>
+      note.title.toLowerCase().includes(value) ||
+      note.content.toLowerCase().includes(value)
+  );
+  renderNotes(filteredNotes);
+}
+
+searchBtn.addEventListener("click", () => {
+  const value = searchInput.value.trim().toLowerCase();
+  loadSearchedNote(value);
+});
+
+// CURD Operations
 function openViewModalSelectedCard(id) {
   const note = notes.find((n) => n.id === Number(id));
-  console.log(note);
   const modal = document.createElement("div");
   modal.classList.add("modal");
 
@@ -143,7 +173,6 @@ function openViewModalSelectedCard(id) {
 
 function openEditModalSelectedCard(id) {
   const note = notes.find((n) => n.id === Number(id));
-  console.log(note);
 
   const modal = document.createElement("div");
   modal.classList.add("modal");
@@ -195,17 +224,18 @@ function openEditModalSelectedCard(id) {
       }
       return n;
     });
+    saveData();
     loadNotesCards();
     modal.remove();
   });
 }
 
 // Container
-const container = document.querySelector(".container");
 
-function loadNotesCards() {
-  container.innerHTML = "";
-  notes.forEach((note) => {
+function renderNotes(notesArray) {
+  container.innerHTML = ``;
+
+  notesArray.forEach((note) => {
     container.innerHTML += `
       <div class="note-card">
           <div class="content-preview">
@@ -224,6 +254,10 @@ function loadNotesCards() {
     `;
   });
 
+  attachEventListeners();
+}
+
+function attachEventListeners() {
   container.querySelectorAll(".view-btn-el").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
@@ -242,9 +276,14 @@ function loadNotesCards() {
     btn.addEventListener("click", () => {
       const id = btn.dataset.id;
       notes = notes.filter((note) => note.id !== Number(id));
+      saveData();
       loadNotesCards();
     });
   });
+}
+
+function loadNotesCards() {
+  renderNotes(notes);
 }
 
 loadNotesCards();
