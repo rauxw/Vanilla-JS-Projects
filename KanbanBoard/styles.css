@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #edf6f5;
+}
+
+.main {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.todo-main {
+  border-radius: 8px;
+  background-color: #fad8f3;
+  flex: 2;
+  padding: 20px;
+}
+
+.todo-title {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-title span {
+  color: #ff8461;
+  width: 6px;
+  height: 6px;
+  background-color: #ff8460;
+  border-radius: 50%;
+}
+
+.todo-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.progress-main {
+  border-radius: 8px;
+  background-color: #f8e3ca;
+  flex: 2;
+  padding: 20px;
+}
+
+.progress-title {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-title span {
+  color: #ff8461;
+  width: 6px;
+  height: 6px;
+  background-color: #ff8460;
+  border-radius: 50%;
+}
+
+.progress-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.complete-main {
+  border-radius: 8px;
+  background-color: #d0cbfa;
+  flex: 2;
+  padding: 20px;
+}
+
+.complete-title {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.complete-title span {
+  color: #ff8461;
+  width: 6px;
+  height: 6px;
+  background-color: #9960f9;
+  border-radius: 50%;
+}
+
+.complete-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.card {
+  width: 100%;
+  min-width: 0;
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 9px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.card-body {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-priority-low {
+  background-color: #f2ffff;
+  padding: 2px 5px 2px 5px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #52b2ac;
+  display: inline-block;
+}
+
+.card-priority-medium {
+  background-color: #feffe7;
+  padding: 2px 5px 2px 5px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #858a27;
+  display: inline-block;
+}
+
+.card-priority-high {
+  background-color: #fff8f6;
+  padding: 2px 5px 2px 5px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #83493b;
+  display: inline-block;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-note {
+  font-size: 16px;
+  color: #9b9e9d;
+  overflow-y: auto;
+}
+
+.card-title,
+.card-note {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.todo-content,
+.progress-content,
+.complete-content {
+  min-height: 150px;
+  min-width: 250px;
+  align-items: stretch;
+}
+
+.todo-content:empty,
+.progress-content:empty,
+.complete-content:empty {
+  border: 2px dashed red;
+}
+
+.sub-main {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+#add-todo-btn {
+  background-color: white;
+  font-size: 34px;
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+}
+
+#add-todo-btn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 30px;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card-delete-btn {
+  padding: 5px 10px 5px 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #a1dedd;
+  color: rgb(12, 143, 132);
+  font-weight: bold;
+}
+
+.card-delete-btn:hover {
+  color: white;
+  background-color: #2e968f;
+  cursor: pointer;
+}
+
+.todo-content,
+.progress-content,
+.complete-content {
+  align-items: center;
+}
