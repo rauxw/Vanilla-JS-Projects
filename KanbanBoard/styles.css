@@ -271,3 +271,47 @@ body {
 .complete-content {
   align-items: center;
 }
+
+#priority-select {
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#modal-title {
+  font-size: 26px;
+  border: none;
+  padding: 10px;
+}
+
+#modal-textarea {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  padding: 10px;
+  height: 250px;
+  resize: none;
+}
+
+.modal-btns-div {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  align-content: center;
+}
+
+.modal-btn {
+  font-size: 30px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  background-color: white;
+  color: black;
+}
+
+.modal-btn:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}

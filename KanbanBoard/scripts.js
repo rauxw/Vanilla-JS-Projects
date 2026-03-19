@@ -1,4 +1,4 @@
-const kanbanData = {
+const kanbanData = JSON.parse(localStorage.getItem("kanbanData")) || {
   todo: [
     {
       id: 1,
@@ -37,6 +37,10 @@ const kanbanData = {
   ],
 };
 
+function saveData() {
+  localStorage.setItem("kanbanData", JSON.stringify(kanbanData));
+}
+
 const addTodoBtnEl = document.getElementById("add-todo-btn");
 
 function openAddTodoModal() {
@@ -51,9 +55,11 @@ function openAddTodoModal() {
         <option value="high">High</option>
       </select>
       <input type="text" id="modal-title" placeholder="Enter title"/>
-      <textarea type="text" id="modal-textarea" placeholder="Enter note"></textarea>
-      <button id="save-modal-btn">Save</button>
-      <button id="close-modal-btn">cancel</button>
+      <textarea type="text" id="modal-textarea" placeholder="Enter note..."></textarea>
+      <div class="modal-btns-div">
+        <button class="modal-btn" id="save-modal-btn">Save</button>
+        <button class="modal-btn" id="close-modal-btn">Cancel</button>
+      </div>
     </div>
   `;
 
@@ -91,6 +97,7 @@ function openAddTodoModal() {
     };
 
     kanbanData.todo.push(newCard);
+    saveData();
     renderAll();
     modal.remove();
   });
@@ -143,6 +150,7 @@ function deleteCard(id) {
   Object.keys(kanbanData).forEach((key) => {
     kanbanData[key] = kanbanData[key].filter((card) => card.id !== Number(id));
   });
+  saveData();
   renderAll();
 }
 
@@ -190,7 +198,7 @@ function moveCard(cardId, newColumn) {
   } else if (newColumn.classList.contains("complete-content")) {
     kanbanData.completed.push(movedCard);
   }
-
+  saveData();
   renderAll();
 }
 
