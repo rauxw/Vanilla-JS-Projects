@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ededf7;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #ffffff;
+  padding: 10px 0px 10px 0px;
+}
+
+.header-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.content {
+  border-top: 1px solid #ebedee;
+}
+
+#product-list-page-btn {
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+}
+
+#product-list-page-btn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid rgba(136, 131, 131, 0.431);
+  padding: 60px;
+  align-items: center;
+}
+
+.product-card-delete-btn {
+  border: none;
+  background-color: inherit;
+  padding: 5px 10px 5px 10px;
+  border-radius: 8px;
+}
+
+.product-card-delete-btn:hover {
+  background-color: rgba(255, 0, 140, 0.294);
+  cursor: pointer;
+}
+
+.product-card-img {
+  width: 300px;
+  height: 350px;
+  border-radius: 8px;
+}
+
+.product-card-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-card-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.product-add-quantity-btn {
+  background-color: #dfe6ea;
+  color: #838e96;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 8px;
+  font-size: 30px;
+}
+
+.product-add-quantity-btn:hover {
+  background-color: #aceeb8;
+  color: #33bc41;
+  cursor: pointer;
+}
+
+.product-quantity-text {
+  font-size: 20px;
+}
+
+.product-delete-quantity-btn {
+  background-color: #dfe6ea;
+  color: #838e96;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 8px;
+  font-size: 30px;
+}
+
+.product-delete-quantity-btn:hover {
+  background-color: rgb(241, 149, 149);
+  color: rgb(253, 2, 2);
+  cursor: pointer;
+}
+
+.product-card-price {
+  font-size: 28px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+}
+
+#total-price-el {
+  font-size: 30px;
+}

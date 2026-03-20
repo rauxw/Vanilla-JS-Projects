@@ -36,10 +36,26 @@ const products = [
     image: "images/hplaptop.jpg",
   },
 ];
-
-let totalCost = JSON.parse(localStorage.getItem("totalCost")) || 0;
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let totalCost = JSON.parse(localStorage.getItem("totalCost")) || getTotalCost();
+
+cart = cart.reduce((acc, item) => {
+  const existing = acc.find((i) => i.id === item.id);
+
+  if (existing) {
+    existing.quantity += item.quantity || 1;
+  } else {
+    acc.push({
+      ...item,
+      quantity: item.quantity || 1,
+    });
+  }
+
+  return acc;
+}, []);
+
+const cardPageBtn = document.getElementById("cart-header-btn");
 
 const cartCount = document.getElementById("card-count");
 
@@ -51,7 +67,8 @@ function saveData() {
 }
 
 function updateCartCount() {
-  cartCount.textContent = cart.length;
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalItems;
 }
 
 function renderCards() {
@@ -79,17 +96,27 @@ function addEventListeners() {
       const existingItem = cart.find((item) => item.id === Number(id));
 
       if (existingItem) {
-        alert("existing item");
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...getProduct, quantity: 1 });
       }
 
-      cart.push(getProduct);
       totalCost += getProduct.price;
       saveData();
       updateCartCount();
-      console.log(cart, totalCost);
     });
   });
 }
+function getTotalCost() {
+  return cart.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
+}
+
+cardPageBtn.addEventListener("click", () => {
+  const cartPagePath = "./Cartpage/Cartpage.html";
+  window.location.href = cartPagePath;
+});
 
 function main() {
   renderCards();
